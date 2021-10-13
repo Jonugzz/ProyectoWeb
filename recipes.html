@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My recipes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://developer.edamam.com/attribution/badge.js"></script>
+</head>
+<body>
+    
+    <nav class="navbar is-white has-shadow">
+        <div class="navbarbrand">
+            <a class="navbar-item">
+                <img src="assets/rpl.png" alt="logo" style="max-height: 70px;" class="py-1 px-2">
+            </a>
+            <a class="navbar-burger" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu" id="nav-links">
+            <div class="navbar-end">
+                <a href="" class="navbar-item"> Analyzer </a>
+                <a href="" class="navbar-item"> My recipes </a>
+                <a href="" class="navbar-item"> About us </a>
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-light">
+                      Log out
+                    </a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="section" style="background-image: url('assets/plbackf.jpg');">
+        <div class="container">
+            <h1 class="is-size-1 Title has-text-white py-6"> Saved recipes</h1>
+            <article class="panel is-primary has-background-white">
+                <p class="panel-heading">
+                  Recipes 
+                </p>
+                <label class="panel-block">
+                  <input type="radio">
+                  remember me
+                </label>
+                <label class="panel-block">
+                  <input type="radio">
+                  remember me 2
+                </label>
+                <label class="panel-block">
+                  <input type="radio">
+                  remember me 3
+                </label>
+                <label class="panel-block">
+                  <input type="radio">
+                  remember me 4
+                </label>
+                <label class="panel-block">
+                  <input type="radio">
+                  remember me 5
+                </label>
+                <label class="panel-block">
+                  <input type="radio">
+                  remember me 6
+                </label>
+                <label class="panel-block">
+                  <input type="radio" class="mx-2">
+                  remember me 7
+                </label>
+              </article>
+              <div class="panel-block">
+                <button class="button is-link is-outlined is-fullwidth">
+                  View Details
+                </button>
+                <button class="button is-danger is-outlined is-fullwidth">
+                  Delete
+                </button>
+              </div>
+        </div>
+    </div>
+
+    <footer class="footer has-background-grey-dark">
+        <div id="edamam-badge" data-color="white" class="has-text-centered py-5"></div>
+        <div class="content has-text-centered has-text-white">
+            Copyright 2021 Recipe Analyzer
+        </div>
+    </footer>
+</body>
+<script src="js/recipes.js"> </script>
+</html>

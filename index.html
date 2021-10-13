@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe A</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+   <div class="section" style="background-image: url('https://jbfood.es/wp-content/uploads/2019/06/fruta-verdura-temporada.jpg');">
+       <div class="container has-background-white">
+           <div class="columns">
+               <div class="column">
+               </div>
+               <div class="column is-two-thirds has-background-white">
+                <h1 class="title is-1 has-text-centered has-text-success py-6">RECIPE ANALYZER</h1>
+
+                <div class="section">
+                    <div class="container">
+                        <p class="is-size-4 has-text-warning-dark">Nowadays, whenever we want to develop healthier habits when it comes to eating or we want to follow a rigorous diet to lose weight, the question arises of how many calories the food we are consuming contains or if it has a lot of carbohydrates, so with this project A tool will be developed 
+                            for the analysis of the food recipes that we consume every day.</p>
+                    </div>
+                </div>
+            
+                <div class="has-text-centered has-text-white has-background-success-dark">
+                    <h1 class="is-size-2">
+                        Start now!
+                    </h1>
+                </div>
+
+                <div class="tabs is-boxed">
+                    <ul>
+                        <li class="is-active" data-target="login">
+                            <a>Log in</a>
+                        </li>
+                        <li data-target="register">
+                            <a>Register</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="tab-content">
+                    <div id="login">
+                        <h3 class="is-size-5 title has-text-centered"> Log in</h3>
+                        <h4 class="is-size-4 has-text-centered has-text-danger" id="LogError"></h4>
+                        <form>
+                            <div class="field">
+                                <label class="label">Email</label>
+                                <div class="control">
+                                    <input type="email" class="input is-normal" placeholder="Email" id="em">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control">
+                                    <input type="password" class="input is-normal" placeholder="Password" id="pass">
+                                </div>
+                            </div>
+                            <div class="mt-6 has-text-centered">
+                                <button class="button is-info is-focused" id="log">Log in</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="register" class="is-hidden">
+                        <h3 class="is-size-5 title has-text-centered"> Join us!</h3>
+                        <h4 class="is-size-4 has-text-centered has-text-danger" id="SignError"> </h4>
+                        <form>
+                            <div class="field">
+                                <label class="label">Email</label>
+                                <div class="control">
+                                    <input type="email" class="input is-normal" placeholder="Email" id="rem">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Password</label>
+                                <div class="control">
+                                    <input type="password" class="input is-normal" placeholder="Password" id="rpass">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Confirm password</label>
+                                <div class="control">
+                                    <input type="password" class="input is-normal" placeholder="Confirm password" id="rcp">
+                                </div>
+                            </div>
+                            <div class="mt-6 has-text-centered">
+                                <button class="button is-info is-focused" id="signup">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+               </div>
+               <div class="column">
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <footer class="footer has-background-grey-dark">
+       <div class="content has-text-centered has-text-white">
+           Copyright 2021 Recipe Analyzer
+       </div>
+   </footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/index.js"> </script>
+</html>
+
+
