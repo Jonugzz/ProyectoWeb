@@ -31,6 +31,10 @@ app.get('/aboutus', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'aboutus.html'));
 });
 
+app.get('/details', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'details.html'));
+});
+
 //validate session
 app.get('/rp-analyzer/validate', (req, res) => {
     let sessionId = req.headers.id;
@@ -113,7 +117,113 @@ app.post('/rp-analyzer/register', jsonParser, (req, res) => {
         
 });
 
-//app.post('/rp-analyzer/saveRecipe')
+app.post('/rp-analyzer/saveRecipe', jsonParser, (req, res) => {
+    const { title , ingredients, Calories, TotalFat, DailyFat, SaturatedFat, DailySF, TransFat, Cholesterol, DailyCH, Na, DailyNa, Carbohydrate, DailyCB, Fiber, DialyFB, Sugars, Protein, VitD, Calcium, Potassium, Iron, userE} = req.body;
+
+    Users
+        .getUser(userE)
+        .then(user => {
+            const newRep = {
+                title,
+                ingredients,
+                Calories,
+                TotalFat,
+                DailyFat,
+                SaturatedFat,
+                DailySF,
+                TransFat,
+                Cholesterol,
+                DailyCH,
+                Na,
+                DailyNa,
+                Carbohydrate,
+                DailyCB,
+                Fiber,
+                DialyFB,
+                Sugars,
+                Protein,
+                VitD,
+                Calcium,
+                Potassium,
+                Iron,
+                user : user.id
+            }
+
+            Recipes
+                .createRecipe(newRep)
+                .then( createdR =>{
+                    return res.status(201).json(createdR);
+                })
+                .catch( err => {
+                    res.statusMessage = err.message;
+                    return res.status(400).end();
+                });
+
+
+        })
+        .catch( err => {
+            res.statusMessage = `Something went wrong: ${err.message}.`;
+            return res.status(400).end();
+        });
+});
+
+app.get('/rp-analyzer/getRe/:userEm', (req, res) => {
+    const { userEm } = req.params;
+
+    Users
+        .getUser(userEm)
+        .then(user => {
+            const userObjectId = user.id;
+
+            Recipes
+                .getRecipesByUser(userObjectId)
+                .then( recp => {
+                    return res.status(200).json(recp);
+                })
+                .catch(err => {
+                    res.statusMessage = err.message;
+                    return res.status(400).end();
+                });
+        })
+        .catch(err => {
+            res.statusMessage = `Something went wrong: ${err.message}.`;
+            return res.status(400).end();
+        });
+});
+
+app.post('/rp-analyzer/view', jsonParser, (req, res) => {
+    const { id } = req.body;
+    
+    var ObjectId = require('mongoose').Types.ObjectId;
+    var o_id = new ObjectId(id);
+
+    Recipes
+        .getRecipebyId(o_id)
+        .then( recipe => {
+            return res.status(200).json(recipe);
+        })
+        .catch(err => {
+            res.statusMessage = `Something went wrong: ${err.message}.`;
+            return res.status(400).end();
+        });
+});
+
+app.get('/rp-analyzer/getInfo/:id', (req, res) => {
+    const { id } = req.params;
+    
+    var ObjectId = require('mongoose').Types.ObjectId;
+    var o_id = new ObjectId(id);
+
+    Recipes
+        .getInfo(o_id)
+        .then( recipe => {
+            return res.status(200).json(recipe);
+        })
+        .catch(err => {
+            res.statusMessage = `Something went wrong: ${err.message}.`;
+            return res.status(400).end();
+        });
+});
 
 app.listen(PORT, () => {
     console.log("Server is running on port " + PORT);

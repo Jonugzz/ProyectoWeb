@@ -110,16 +110,36 @@ const Recipes = {
                     throw new Error(err);
                 });
     },
-    getAllRecipes : function(){
+    getInfo : function(id){
         return recipeCollection
-                .find()
-                .then( allRep => {
-                    return allRep;
+                .findOne( {_id : id} )
+                .then( recipe => {
+                    return recipe;
                 })
                 .catch( err => {
-                    throw new Error(err);
+                    throw new Error( err );
                 });
-    }
+    },
+    getRecipesByUser : function( userObjectId){
+        return recipeCollection
+                .find( { user : userObjectId } )
+                .then( allRec => {
+                     return allRec;
+                })
+                .catch(err => {
+                    throw new Error( err );
+                });
+    },
+    getRecipebyId : function(id){
+        return recipeCollection
+                .findOneAndDelete( {_id : id} )
+                .then( recipe => {
+                    return recipe;
+                })
+                .catch( err => {
+                    throw new Error( err );
+                });
+    } 
 }
 
 module.exports = {

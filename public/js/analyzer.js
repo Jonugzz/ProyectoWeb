@@ -23,7 +23,7 @@ $("#check").on("click", function(event){
     arrIng = {
         "ingr": rIng.val().split(/\n|\r/)
     };
-
+    
     $.ajax({
         url: 'https://api.edamam.com/api/nutrition-details?app_id=20a5cda9&app_key=1e3fb8c297586dcacdd139de9d8124cf',
         type: 'POST',
@@ -303,7 +303,54 @@ $("#sav").on("click", function(event){
     }
     else{
         messErr.text("");
-        console.log(nFacts);
-        alert("Saved");
+        
+        var uem = localStorage.getItem('email');
+        var newRep = {
+            title: rt.val(),
+            ingredients: rIng.val(),
+            Calories: nFacts.Calories,
+            TotalFat: nFacts.TotalFat,
+            DailyFat: nFacts.DailyFat,
+            SaturatedFat: nFacts.SaturatedFat,
+            DailySF: nFacts.DailySF,
+            TransFat: nFacts.TransFat,
+            Cholesterol: nFacts.Cholesterol,
+            DailyCH: nFacts.DailyCH,
+            Na: nFacts.Na,
+            DailyNa: nFacts.DailyNa,
+            Carbohydrate: nFacts.Carbohydrate,
+            DailyCB: nFacts.DailyCB,
+            Fiber: nFacts.Fiber,
+            DialyFB: nFacts.DialyFB,
+            Sugars: nFacts.Sugars,
+            Protein: nFacts.Protein,
+            VitD: nFacts.VitD,
+            Calcium: nFacts.Calcium,
+            Potassium: nFacts.Potassium,
+            Iron: nFacts.Iron,
+            userE : uem
+        }
+
+        var settings = {
+            method : 'POST',
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body : JSON.stringify(newRep)
+        }
+        fetch('/rp-analyzer/saveRecipe', settings)
+            .then( response => {
+                if(response.ok){
+                    return response.json();
+                }
+                throw new Error(response.statusText);
+            })
+            .then(responseJSON => {
+                alert("Saved");
+                
+            })
+            .catch( err => {
+                messErr.innerText = err.message;
+            });
     }
 });
