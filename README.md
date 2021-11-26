@@ -2,5 +2,5 @@
 
 <h1> Recipe Analyzer</h1>
 
-<a href="https://infinite-hamlet-12691.herokuapp.com/"> </a>
+<a href="https://infinite-hamlet-12691.herokuapp.com/"> Link</a>
 <h3>Joel Nuñez A01282348</h3>
