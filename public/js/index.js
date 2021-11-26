@@ -19,7 +19,7 @@ tabs.forEach((tab) => {
     });
 });
 
-//Data validation and error messages
+//Validacian de los campos y login
 var lem = document.getElementById("em");
 var lpass = document.getElementById("pass");
 var lerr = document.getElementById("LogError");
@@ -37,7 +37,7 @@ $("#log").on("click", function (e){
             email: lem.value,
             password: lpass.value
         };
-        //fetch to validate the credentials of the user
+        //fetch para mandar las credenciales del usuario en un post
         var settings = {
             method : 'POST',
             headers : {
@@ -72,7 +72,7 @@ var sem = document.getElementById("rem");
 var spass = document.getElementById("rpass");
 var scp = document.getElementById("rcp");
 var rerr = document.getElementById("SignError");
-
+//Validaciones del registro y fetch para crear el usuario nuevo
 $("#signup").on("click", function (e){
     e.preventDefault();
     if (sem.value.indexOf("@") == -1){

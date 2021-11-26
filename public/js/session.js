@@ -11,7 +11,7 @@ let settings = {
         id : SD
     }
 };
-
+//fetch para llamar al get de validasion de sesion
 fetch("/rp-analyzer/validate", settings)
     .then(response => {
         if(response.ok){

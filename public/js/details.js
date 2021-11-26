@@ -5,7 +5,7 @@ const navbarM = document.querySelector('#nav-links');
 burgerIcon.addEventListener('click', () => {
     navbarM.classList.toggle('is-active');
 });
-
+//Funcion para cargar info de una receta recibida por un metodo get
 function cargaInfo(){
     var t = $("#title");
     var ingr = $("#ing");

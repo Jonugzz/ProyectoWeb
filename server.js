@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const bycrypt = require('bcryptjs');
-const jsonwebtoken = require('jsonwebtoken');
 const { DATABASE_URL, PORT } = require('./config');
 const { Users } = require('./models/users-model');
 const { Recipes } = require('./models/recipes-model');
@@ -35,7 +34,7 @@ app.get('/details', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'details.html'));
 });
 
-//validate session
+//validar sesiones
 app.get('/rp-analyzer/validate', (req, res) => {
     let sessionId = req.headers.id;
     
@@ -45,7 +44,7 @@ app.get('/rp-analyzer/validate', (req, res) => {
     return res.status(200).json("Valid sesion");
 });
 
-//POST 
+//POST para validar las credenciales del usuario en la db recibidas en el body de la req
 app.post('/rp-analyzer/login', jsonParser, (req, res) => {
     let { email, password} = req.body;
 
@@ -83,7 +82,7 @@ app.post('/rp-analyzer/login', jsonParser, (req, res) => {
         });
 });
 
-//POST to create a new user in the db
+//POST para crear un usuario en la db
 app.post('/rp-analyzer/register', jsonParser, (req, res) => {
     let {userName, email, password} = req.body;
 
@@ -117,6 +116,7 @@ app.post('/rp-analyzer/register', jsonParser, (req, res) => {
         
 });
 
+//POST para agregar una receta a la lista de recetas del usuario
 app.post('/rp-analyzer/saveRecipe', jsonParser, (req, res) => {
     const { title , ingredients, Calories, TotalFat, DailyFat, SaturatedFat, DailySF, TransFat, Cholesterol, DailyCH, Na, DailyNa, Carbohydrate, DailyCB, Fiber, DialyFB, Sugars, Protein, VitD, Calcium, Potassium, Iron, userE} = req.body;
 
@@ -167,6 +167,7 @@ app.post('/rp-analyzer/saveRecipe', jsonParser, (req, res) => {
         });
 });
 
+//Get que recibe la lista de recetas de un usuario
 app.get('/rp-analyzer/getRe/:userEm', (req, res) => {
     const { userEm } = req.params;
 
@@ -191,6 +192,7 @@ app.get('/rp-analyzer/getRe/:userEm', (req, res) => {
         });
 });
 
+//POST que recibe un id en body para borrar una receta de un usuario
 app.post('/rp-analyzer/view', jsonParser, (req, res) => {
     const { id } = req.body;
     
@@ -208,6 +210,7 @@ app.post('/rp-analyzer/view', jsonParser, (req, res) => {
         });
 });
 
+//Get para mostrar la info de una receta
 app.get('/rp-analyzer/getInfo/:id', (req, res) => {
     const { id } = req.params;
     
